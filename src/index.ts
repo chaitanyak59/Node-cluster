@@ -1,10 +1,9 @@
 import express from "express";
 import startApp from "./app";
-
+import dotenv from 'dotenv';
 import { initRoutes } from "./routes";
 
-require('dotenv').config();
-
+dotenv.config();
 const port = Number(process.env.PORT);
 
 function startMain(serverPort: number) {
