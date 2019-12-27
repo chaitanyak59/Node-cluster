@@ -40,7 +40,7 @@ cmd: npm pm2-start (Project will run in Cluster Mode, based on available cores) 
 
 ## Authors
 
-* **Chaitanya Kumar** - *Initial work* - [Chaitanya](https://gist.github.com/chaitanya-apty)
+* **Chaitanya Kumar** - *Initial work* - [Chaitanya](https://github.com/chaitanya-apty)
 
 ## License
 
