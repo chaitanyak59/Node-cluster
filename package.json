@@ -1,0 +1,35 @@
+{
+  "name": "cluster-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.production.json",
+    "start:prod": "node dist/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cannon": "autocannon -c 5000 -p 4 -d 20 http://localhost:6000/delay",
+    "pm2-start": "pm2 start ecosystem.config.js",
+    "pm2-stop": "pm2 start ecosystem.config.js",
+    "start": "tsc-watch --onSuccess \"cross-env NODE_ENV=development node build/src/index.js\" --onFailure \"echo Beep! Compilation Failed\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chaitanya-apty/Node-cluster"
+  },
+  "author": "Chaitanya",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.1.1",
+    "autocannon": "^4.4.1",
+    "cross-env": "^6.0.3",
+    "pm2": "^4.2.1",
+    "tsc-watch": "^4.0.0",
+    "typescript": "^3.7.4"
+  }
+}

@@ -1,0 +1,34 @@
+#Using Core Cluster Module, replace this with main init file to use 
+
+import express from "express";
+import startApp from "./app";
+import cluster from 'cluster';
+
+import { initRoutes } from "./routes";
+
+require('dotenv').config();
+
+const port = Number(process.env.PORT);
+
+function startMain(serverPort: number) {
+    const app = express();
+    initRoutes(app);
+    startApp(app, serverPort);
+}
+
+if(cluster.isMaster && process.env.NODE_ENV == 'production') {
+    var numWorkers = require('os').cpus().length;
+
+    console.log('Master cluster setting up ' + numWorkers + ' workers...');
+
+    for(var i = 0; i < numWorkers; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', function(worker, code, signal) {
+        cluster.fork();
+    });
+
+} else {
+    startMain(port)
+}
