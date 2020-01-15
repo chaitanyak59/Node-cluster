@@ -1,11 +1,11 @@
 
 import { Express } from 'express';
 
-function startApp(app: Express, port: number): void {
+async function startApp(app: Express, port: number): Promise<void> {
     try {
-        app.listen(port, () => console.log('Server Started @:', port));
+        app.listen(port, () => console.log('Server Started @:',process.env.NODE_ENV, port));
     } catch (e) {
-        console.error('Server Failed to Start');
+        console.error('Server Failed to Start', e);
     }
 }
 
